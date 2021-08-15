@@ -25,11 +25,6 @@ DEBUG = int(os.environ.get("DEBUG", default=0))
 SECRET_KEY = os.environ.get("SECRET_KEY", "foo")
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost").split(" ")
 PROJECT_ID = os.environ.get('PROJECT_ID')
-EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
-EMAIL_HOST = os.environ.get('EMAIL_HOST')
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = os.environ.get('EMAIL_PORT', default='587')
 
 
 # Application definition
