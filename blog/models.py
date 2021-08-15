@@ -8,6 +8,7 @@ from django.db import models
 # from django.dispatch import receiver
 from django.utils import timezone
 
+from mdeditor.fields import MDTextField
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -51,7 +52,7 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag, blank=True)
     title = models.CharField(max_length=255)
-    content = models.TextField()
+    content = MDTextField()#models.TextField()
     description = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='post_images/', null=True, blank=True)

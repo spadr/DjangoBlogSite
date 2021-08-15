@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load markdown_extras %}
 {% block title %}{{ object.title }} | {{ block.super }}{% endblock %}
 {% block description %}{{ object.description }}{% endblock %}
 
@@ -8,18 +8,20 @@
   <div class="row">
     <main class="col-md-8">
       <article class="blog-area">
-        <h1>{{ object.title }}</h1>
-        <p>{{ object.published_at|date }}</p>
-        <p>{{ object.category.name }}</p>
-        {% for tag in object.tags.all %}
-        {{ tag.name }}
-        {% endfor %}
+        <h2>{{ object.title }}</h2>
+        <p style="text-align:right">{{ object.published_at|date }}</p>
+        <p class="categ_tag" style="text-align:right">
+          カテゴリ: <a href="{% url 'blog:category_post' object.category.slug %}">{{ object.category.name }}</a><br>
+          タグ: {% for tag in object.tags.all %}
+          <a href="{% url 'blog:tag_post' tag.slug %}">{{ tag.name }}</a> 
+          {% endfor %}
+        <div id="content" language="ja">{{ object.content|markdown|safe }}</div>
         <hr>
-        {{ object.content|safe }}
       </article>
       <article class="comment-area">
-        <a class="btn btn-primary my-3" href="{% url 'blog:comment_form' post.pk %}">コメントを投稿する</a>
+        <a class="btn btn-success my-3" href="{% url 'blog:comment_form' post.pk %}">コメントを投稿する</a>
         {% include "blog/snippets/comments.html" %}
+        <hr>
       </article>
     </main>
     <aside class="col-md-4">
