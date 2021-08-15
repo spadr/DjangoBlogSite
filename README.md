@@ -1,2 +1,1 @@
-# DjangoBlogSite
-ブログサイトをつくろう with Django
+
