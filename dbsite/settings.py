@@ -25,7 +25,7 @@ DEBUG = int(os.environ.get("DEBUG", default=0))
 SECRET_KEY = os.environ.get("SECRET_KEY", "foo")
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost").split(" ")
 PROJECT_ID = os.environ.get('PROJECT_ID')
-
+ARTICLE = int(os.environ.get("ARTICLE", default=3))
 
 # Application definition
 

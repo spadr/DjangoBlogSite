@@ -5,9 +5,12 @@ from django.shortcuts import get_object_or_404, redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView
+from django.conf import settings
 
 from blog.forms import CommentForm, ReplyForm
 from blog.models import Post, Category, Tag, Comment, Reply
+
+ARTICLE = getattr(settings, "ARTICLE", 3)
 
 
 class PostDetailView(DetailView):
@@ -23,7 +26,7 @@ class PostDetailView(DetailView):
 class IndexView(ListView):
     model = Post
     template_name = 'blog/index.html'
-    paginate_by = 3
+    paginate_by = int(ARTICLE)
 
 
 class CategoryPostView(ListView):
